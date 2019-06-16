@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53B22A4322B4B9EC00311AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53B22A4222B4B9EC00311AB9 /* LaunchScreen.storyboard */; };
 		53E5EF0722B3D49A0038F548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5EF0622B3D49A0038F548 /* AppDelegate.swift */; };
 		53E5EF0922B3D49A0038F548 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E5EF0822B3D49A0038F548 /* art.scnassets */; };
 		53E5EF0B22B3D49A0038F548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5EF0A22B3D49A0038F548 /* ViewController.swift */; };
 		53E5EF0E22B3D49A0038F548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E5EF0C22B3D49A0038F548 /* Main.storyboard */; };
 		53E5EF1022B3D49C0038F548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E5EF0F22B3D49C0038F548 /* Assets.xcassets */; };
-		53E5EF1322B3D49C0038F548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E5EF1122B3D49C0038F548 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53B22A4222B4B9EC00311AB9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53E5EF0322B3D49A0038F548 /* O-detector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "O-detector.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E5EF0622B3D49A0038F548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E5EF0822B3D49A0038F548 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		53E5EF0A22B3D49A0038F548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		53E5EF0D22B3D49A0038F548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		53E5EF0F22B3D49C0038F548 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		53E5EF1222B3D49C0038F548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53E5EF1422B3D49C0038F548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +61,7 @@
 				53E5EF0A22B3D49A0038F548 /* ViewController.swift */,
 				53E5EF0C22B3D49A0038F548 /* Main.storyboard */,
 				53E5EF0F22B3D49C0038F548 /* Assets.xcassets */,
-				53E5EF1122B3D49C0038F548 /* LaunchScreen.storyboard */,
+				53B22A4222B4B9EC00311AB9 /* LaunchScreen.storyboard */,
 				53E5EF1422B3D49C0038F548 /* Info.plist */,
 			);
 			path = "O-detector";
@@ -125,8 +125,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53B22A4322B4B9EC00311AB9 /* LaunchScreen.storyboard in Resources */,
 				53E5EF0922B3D49A0038F548 /* art.scnassets in Resources */,
-				53E5EF1322B3D49C0038F548 /* LaunchScreen.storyboard in Resources */,
 				53E5EF1022B3D49C0038F548 /* Assets.xcassets in Resources */,
 				53E5EF0E22B3D49A0038F548 /* Main.storyboard in Resources */,
 			);
@@ -153,14 +153,6 @@
 				53E5EF0D22B3D49A0038F548 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		53E5EF1122B3D49C0038F548 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				53E5EF1222B3D49C0038F548 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -286,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P6RRCWXXVC;
 				INFOPLIST_FILE = "O-detector/Info.plist";
@@ -295,6 +288,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mytest.O-detector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,6 +298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P6RRCWXXVC;
 				INFOPLIST_FILE = "O-detector/Info.plist";
@@ -313,6 +308,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mytest.O-detector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

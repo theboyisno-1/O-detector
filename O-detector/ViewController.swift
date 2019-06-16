@@ -14,20 +14,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    lazy var infoLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.font = label.font.withSize(14)
+        label.textColor = UIColor.brown
+        label.textAlignment = .center
+        label.backgroundColor = .white
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
+        sceneView.addSubview(infoLabel)
         sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,9 +38,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
-        sceneView.session.run(configuration)
+        guard let refObjects = ARReferenceObject.referenceObjects(inGroupNamed:"arobjects",bundle: nil) else {
+            fatalError("Missing expected asset resources.")
+        }
+        
+        configuration.detectionObjects = refObjects
+        sceneView.debugOptions = [ARSCNDebugOptions.showWireframe,
+                                  ARSCNDebugOptions.showBoundingBoxes,
+                                  ARSCNDebugOptions.showFeaturePoints]
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,20 +55,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        infoLabel.frame = CGRect(x: 0, y: 16, width: sceneView.bounds.width, height: 36)
+        infoLabel.text = "By KhanAbdul"
+    }
 
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        print("in 1st")
+        if let objectAnchor = anchor as? ARObjectAnchor {
+            print("Detected")
+            let translation = objectAnchor.transform.columns.3
+            let pos = float3(translation.x, translation.y, translation.z)
+            let nodeArrow = self.getArrowNode()
+            nodeArrow.position = SCNVector3(pos)
+            sceneView.scene.rootNode.addChildNode(nodeArrow)
+        }
     }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
+        print("failed")
         
     }
     
@@ -71,5 +90,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    func getArrowNode() -> SCNNode {
+        print("Getting yellow")
+        let sceneURL = Bundle.main.url(forResource: "arrow_yellow", withExtension: "scn", subdirectory: "art.scnassets")!
+        let referenceNode = SCNReferenceNode(url: sceneURL)!
+        referenceNode.load()
+        print("got yellow")
+        return referenceNode
     }
 }
